@@ -1,0 +1,23 @@
+{
+  "name": "dream-electron-game",
+  "version": "1.0.0",
+  "description": "I want to create game on Electron!",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Belialz/dream-electron-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Belialz/dream-electron-game/issues"
+  },
+  "homepage": "https://github.com/Belialz/dream-electron-game#readme",
+  "devDependencies": {
+    "electron": "^27.0.2"
+  }
+}
