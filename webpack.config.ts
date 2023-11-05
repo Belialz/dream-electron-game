@@ -1,29 +1,69 @@
-const [ Dotenv ] = require('./webpack.plugins');
-const path = require('path');
+import { Configuration } from "webpack";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-module.exports = {
-    /**
-    * This is the main entry point for your application, it's the first file
-    * that runs in the main process.
-    */
-    entry: './src/main/index.ts',
-    // Put your normal webpack config below here
-    module: {
-        rules: require('./webpack.rules'),
-    },
-    resolve: {
-        extensions: ['.js', '.ts', '.jsx', '.tsx', '.css', '.json'],
-        alias: {
-            app: path.resolve(__dirname, 'src', 'app'),
-            main: path.resolve(__dirname, 'src', 'main'),
-            // We override the call to the debug version of Nodegit, since we are
-            // not building it anyways, and webpack trips over the conditional
-            // require statement in Nodegit.
-            '../build/Debug/nodegit.node': false,
-        }
-    },
-    plugins: [
-        Dotenv,
+const isDev = process.env.NODE_ENV === "development";
+
+const common: Configuration = {
+  mode: isDev ? "development" : "production",
+  externals: ["fsevents"],
+  resolve: {
+    extensions: [".js", ".ts", ".jsx", ".tsx", ".json"],
+  },
+  output: {
+    publicPath: "./",
+    assetModuleFilename: "assets/[name][ext]",
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: "ts-loader",
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(ico|png|svg|eot|woff?2?)$/,
+        type: "asset/resource",
+      },
     ],
-    // devtool: 'source-map',
+  },
+  watch: isDev,
+  devtool: isDev ? "source-map" : undefined,
 };
+
+const main: Configuration = {
+  ...common,
+  target: "electron-main",
+  entry: {
+    main: "./src/main.ts",
+  },
+};
+
+const preload: Configuration = {
+  ...common,
+  target: "electron-preload",
+  entry: {
+    preload: "./src/preload.ts",
+  },
+};
+
+const renderer: Configuration = {
+  ...common,
+  target: "web",
+  entry: {
+    app: "./src/web/index.tsx",
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      inject: "body",
+      template: "./src/web/index.html",
+    }),
+  ],
+};
+
+export default [main, preload, renderer];
