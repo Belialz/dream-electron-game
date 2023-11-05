@@ -1,25 +1,16 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "module": "commonjs",
-    "skipLibCheck": true,
+    "target": "ESNext",
+    "module": "ESNext",
     "esModuleInterop": true,
-    "noImplicitAny": true,
-    "sourceMap": true,
-    "baseUrl": "./src",
-    "outDir": "dist",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "paths": {
-      "main": ["./src"],
-      "app": ["./app"],
-    },
-    "jsx": "react",
-    "target": "es6",
+    "moduleResolution": "Node",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react-jsx",
+    "strict": true
   },
-  "include": [
-    "src/**/*",
-    "test/**/*",
-    "playwright.config.ts"
-  ]
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
