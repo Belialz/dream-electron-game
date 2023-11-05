@@ -2,11 +2,11 @@
   "name": "dream-electron-game",
   "version": "1.0.0",
   "description": "I want to create game on Electron!",
-  "main": "dist/main.js",
+  "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
-    "build": "tsc",
-    "watch": "tsc -w",
+    "lint": "eslint --ext .ts,.tsx ./src && tsc --noEmit",
+    "rebuild:native-modules": "electron-rebuild",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -48,6 +48,11 @@
     "@types/yargs": "17.0.24",
     "@typescript-eslint/eslint-plugin": "5.57.0",
     "@typescript-eslint/parser": "5.57.0",
+    "@vercel/webpack-asset-relocator-loader": "1.7.3",
+    "cross-env": "7.0.3",
+    "csp-html-webpack-plugin": "5.1.0",
+    "css-loader": "6.7.3",
+    "dotenv-webpack": "7.1.1",
     "electron": "^27.0.2",
     "electron-devtools-installer": "3.2.0",
     "eslint": "8.37.0",

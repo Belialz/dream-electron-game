@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "paths": {
-      "main": ["./main"],
+      "main": ["./src"],
       "app": ["./app"],
     },
     "jsx": "react",
