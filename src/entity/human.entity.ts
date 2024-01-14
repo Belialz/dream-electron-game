@@ -1,6 +1,6 @@
-import { BaseEntity } from "./base.entity";
+import { BaseEntity } from './base.entity'
 
 export class HumanEntity extends BaseEntity {
-    age: number = 0;
-    background: string = 'Some Human';
+    age: number = 0
+    background: string = 'Some Human'
 }
