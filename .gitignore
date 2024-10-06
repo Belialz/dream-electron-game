@@ -1,4 +1,5 @@
 node_modules
 dist
 chat-gpt-key.json
+telegram-bot-key.json
 charactersv1

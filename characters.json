@@ -1,0 +1,54 @@
+{
+  "characters": [
+    {
+      "name": "Jakob",
+      "description": "Farmer",
+      "age": 0,
+      "background": "Some Human",
+      "skills": [
+        "strike",
+        "run"
+      ]
+    },
+    {
+      "name": "Elara",
+      "description": "Wizard",
+      "age": 58,
+      "background": "Academic",
+      "skills": [
+        "spellcasting",
+        "arcane knowledge"
+      ]
+    },
+    {
+      "name": "Gareth",
+      "description": "Paladin",
+      "age": 32,
+      "background": "Noble",
+      "skills": [
+        "divine smite",
+        "Lay on Hands"
+      ]
+    },
+    {
+      "name": "Sariel",
+      "description": "Rogue",
+      "age": 25,
+      "background": "Criminal",
+      "skills": [
+        "sneak",
+        "lockpicking"
+      ]
+    },
+    {
+      "name": "Thorn",
+      "description": "Barbarian",
+      "age": 40,
+      "background": "Outlander",
+      "skills": [
+        "rage",
+        "survival"
+      ]
+    }
+  ]
+}
